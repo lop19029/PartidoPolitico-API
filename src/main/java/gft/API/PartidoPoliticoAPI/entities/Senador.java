@@ -1,0 +1,23 @@
+package gft.API.PartidoPoliticoAPI.entities;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@DiscriminatorValue(value="Senador")
+public class Senador extends Politico{
+    public Senador(Long id, String nome, @CPF(message = "CPF inválido.") String cpf, Endereco endereco,
+                   String telefone, Partido partido, String foto, List<ProjetoLei> projetos,
+                   List<Processo> processos) {
+        super(id, nome, cpf, endereco, telefone, partido, foto, projetos, processos);
+    }
+}
